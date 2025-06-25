@@ -1,0 +1,23 @@
+{
+  "timestamp": "2025-06-25T01:29:36.533Z",
+  "totalTests": 3,
+  "passedTests": 3,
+  "failedTests": 0,
+  "results": [
+    {
+      "name": "should check for required environment variables",
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "should check server.js exists",
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "should check app.js and config.js exist",
+      "passed": true,
+      "error": null
+    }
+  ]
+}

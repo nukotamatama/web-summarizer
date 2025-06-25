@@ -1,0 +1,122 @@
+/* Base styles */
+body {
+    font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+    line-height: 1.6;
+    color: #1a202c;
+}
+
+/* Animation for loading state */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Textarea styling */
+textarea {
+    resize: vertical;
+    min-height: 200px;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+
+/* Button styling */
+button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Result section */
+#result {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    textarea {
+        min-height: 150px;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1a202c;
+        color: #e2e8f0;
+    }
+    
+    .bg-white {
+        background-color: #2d3748;
+    }
+    
+    .text-gray-700 {
+        color: #e2e8f0;
+    }
+    
+    .text-gray-800 {
+        color: #e2e8f0;
+    }
+    
+    .bg-gray-50 {
+        background-color: #2d3748;
+    }
+    
+    .border-gray-200 {
+        border-color: #4a5568;
+    }
+    
+    .text-gray-500 {
+        color: #a0aec0;
+    }
+    
+    .text-gray-600 {
+        color: #a0aec0;
+    }
+    
+    input, textarea {
+        background-color: #2d3748;
+        border-color: #4a5568;
+        color: #e2e8f0;
+    }
+    
+    input:focus, textarea:focus {
+        border-color: #63b3ed;
+        box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.25);
+    }
+}

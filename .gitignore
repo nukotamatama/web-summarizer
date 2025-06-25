@@ -1,0 +1,45 @@
+# Dependencies
+node_modules
+
+# APIキーなどの機密情報を含む設定ファイル
+config.js/
+
+# Environment variables
+.env
+*.env.local
+
+# Build output
+dist/
+build/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Local development
+.cache/
+.temp/
+
+# Testing
+coverage/
+
+# Production
+.env.production
+
+# Misc
+.DS_Store
+Thumbs.db
