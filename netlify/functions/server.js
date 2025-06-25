@@ -11,7 +11,6 @@ const serverless = require('serverless-http');
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 // API キー（環境変数から取得）
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
@@ -30,8 +29,8 @@ app.use(cors({
 // JSON ボディパーサー
 app.use(express.json());
 
-// 静的ファイルの提供
-app.use(express.static(path.join(__dirname, '/')));
+// 静的ファイルの提供 (Path corrected for netlify/functions directory)
+app.use(express.static(path.join(__dirname, '../../')));
 
 // レート制限の設定
 const apiLimiter = rateLimit({
@@ -55,21 +54,7 @@ app.post('/api/summarize', async (req, res) => {
     }
     
     // プロンプトの設定
-    const prompt = `あなたは、与えられたウェブページの内容を分析し、その核心を1文にまとめるプロの編集者です。
-
-# 制約条件
-- 出力は、必ず日本語の1文で行うこと。
-- 要約は、記事やページの最も重要な結論や主題を反映していること。
-- 専門用語は極力避け、一般的で分かりやすい言葉を選ぶこと。
-- 最大でも100文字以内を目安とし、簡潔にまとめること。
-- 元の記事の客観的な事実に基づき、個人的な意見や解釈は加えないこと。
-
-# 入力
-以下のテキストは、要約対象のウェブページから抽出した内容です。
-
-${text}
-
-# 出力`;
+    const prompt = `あなたは、与えられたウェブページの内容を分析し、その核心を1文にまとめるプロの編集者です。\n\n# 制約条件\n- 出力は、必ず日本語の1文で行うこと。\n- 要約は、記事やページの最も重要な結論や主題を反映していること。\n- 専門用語は極力避け、一般的で分かりやすい言葉を選ぶこと。\n- 最大でも100文字以内を目安とし、簡潔にまとめること。\n- 元の記事の客観的な事実に基づき、個人的な意見や解釈は加えないこと。\n\n# 入力\n以下のテキストは、要約対象のウェブページから抽出した内容です。\n\n${text}\n\n# 出力`;
 
     // Gemini API へのリクエスト
     const apiUrl = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro:generateContent?key=${GEMINI_API_KEY}`;
@@ -157,9 +142,9 @@ app.post('/api/fetch-url', async (req, res) => {
   }
 });
 
-// メインページへのルーティング
+// メインページへのルーティング (Path corrected for netlify/functions directory)
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, '../../index.html'));
 });
 
 // サーバーレス環境向けに handler をエクスポート
