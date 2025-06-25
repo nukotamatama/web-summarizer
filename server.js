@@ -147,7 +147,8 @@ app.post('/api/fetch-url', async (req, res) => {
     }
     
     const content = await response.text();
-    res.json({ content });
+    // 取得したコンテンツをJSONオブジェクトでラップして返す
+    res.json({ content: content });
     
   } catch (error) {
     console.error('URL 取得エラー:', error);
