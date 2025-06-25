@@ -6,7 +6,12 @@
   # Only process files in the netlify/functions directory as serverless functions
   directory = "netlify/functions"
   node_bundler = "esbuild"
-  timeout = 25
+  
+  # Timeout configuration
+  [functions.timeout]
+  # Maximum execution time for functions in seconds
+  default = 25
+  
   # Explicitly ignore all other directories
   included_files = ["netlify/functions/**"]
 
