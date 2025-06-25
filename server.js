@@ -5,6 +5,7 @@ const rateLimit = require('express-rate-limit');
 const fetch = require('node-fetch');
 const dotenv = require('dotenv');
 const path = require('path');
+const serverless = require('serverless-http');
 
 // 環境変数の読み込み
 dotenv.config();
@@ -161,7 +162,5 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// サーバー起動
-app.listen(PORT, () => {
-  console.log(`サーバーが http://localhost:${PORT} で起動しました`);
-});
+// サーバーレス環境向けに handler をエクスポート
+module.exports.handler = serverless(app);

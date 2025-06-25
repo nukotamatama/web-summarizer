@@ -2,9 +2,21 @@
   command = "npm install"
   publish = "."
 
+[functions]
+  directory = "."
+  node_bundler = "esbuild"
+
 [build.environment]
   NODE_VERSION = "18.0.0"
 
+# APIリクエストをバックエンド関数にプロキシする
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/server/:splat"
+  status = 200
+  force = true
+
+# その他のリクエストはフロントエンドに流す
 [[redirects]]
   from = "/*"
   to = "/index.html"
