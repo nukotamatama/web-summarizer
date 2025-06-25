@@ -5,6 +5,7 @@
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
+  timeout = 25
 
 [build.environment]
   NODE_VERSION = "18.0.0"
