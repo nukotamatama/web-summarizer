@@ -3,9 +3,12 @@
   publish = "."
 
 [functions]
+  # Only process files in the netlify/functions directory as serverless functions
   directory = "netlify/functions"
   node_bundler = "esbuild"
   timeout = 25
+  # Explicitly ignore all other directories
+  included_files = ["netlify/functions/**"]
 
 [build.environment]
   NODE_VERSION = "18.0.0"
